@@ -1,5 +1,5 @@
 # News Analysis
 
-##Summarization
+## Summarization
 
-##Sentiment Analysis
+## Sentiment Analysis
