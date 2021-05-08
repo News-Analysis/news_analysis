@@ -15,17 +15,14 @@ han_sum_text_list = list()
 summarize = Pororo(task="summary", lang="kr")
 
 i = 0
-
 for text in seoul_data['content']:
     sum_text = summarize(text)
     seoul_sum_text_list.append(sum_text)
-    i += 1
-    print(i, "텍스트 완성")
-    print(sum_text)
 
 df = pd.DataFrame(seoul_sum_text_list)
 df.to_csv('C:\\Users\\RYU\\seoul_data_sum.csv', index=False, encoding='utf-8-sig')
 
+i = 0
 for text in mt_data['content']:
     sum_text = summarize(text)
     mt_sum_text_list.append(sum_text)
@@ -36,6 +33,7 @@ for text in mt_data['content']:
 df = pd.DataFrame(mt_sum_text_list)
 df.to_csv('C:\\Users\\RYU\\mt_data_sum.csv', index=False, encoding='utf-8-sig')
 
+i = 0
 for text in josun_data["content"]:
     sum_text = summarize(text)
     josun_sum_text_list.append(sum_text)
