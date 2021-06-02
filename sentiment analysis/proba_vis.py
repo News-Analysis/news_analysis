@@ -22,23 +22,40 @@ for proba in proba_path:
 
 
 proba_mean = []
-
+proba_count = []
+proba_median = []
+proba_pos = []
 df = pd.DataFrame()
 for proba in proba_list:
+    proba['pos'] = proba['info'].map(lambda x: 1 if x > 0.5 else 0)
     proba_mean.append(proba['info'].mean())
+    proba_count.append(proba.shape[0])
+    proba_median.append(proba['info'].median())
+    proba_pos.append(proba['pos'].sum())
     #score_mean.append(score['점수'].mean())
-print(proba_subject)
-print(proba_press)
-print(proba_mean)
-'''for i in range(len(proba_list)):
-    sns.histplot(proba_list[i]['info'], bins=10).set_title(
+
+
+sr = pd.DataFrame({
+    'mean': proba_mean,
+    'median': proba_median,
+    'count': proba_count,
+    'positive': proba_pos,
+    'press': proba_press,
+    'subject': proba_subject
+})
+print(sr.to_csv('temp.csv', index=False, encoding='utf-8-sig'))
+
+for i in range(len(proba_list)):
+    sns.histplot(proba_list[i]['info'], bins=10, stat='probability').set_title(\
         proba_subject[i] + '_' + proba_press[i],
         fontproperties=fontprop
     )
+    plt.xlim(0.1, 0.9)
+    plt.ylim(0, 0.35)
     plt.savefig('./hist_sen/' + proba_subject[i] + '_' + proba_press[i] + '.png')
     plt.clf()
     plt.close('all')
-'''
+
 # summary
 '''proba_path = glob.glob('.\\result(요약_감성분석)/*')
 

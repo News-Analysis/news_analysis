@@ -6,7 +6,7 @@ path = glob.glob('./data/*')
 print(path)
 
 
-keyword = '재난지원금'
+keyword = '홍준표'
 ex = []
 press = []
 
