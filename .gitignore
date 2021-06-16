@@ -141,3 +141,9 @@ cython_debug/
 # directory
 KoGPT2-subtasks/
 fairseq/
+data ingestion/data
+data ingestion/data_key
+data ingestion/keyword
+data ingestion/sum_senti
+sentiment analysis/result_entire
+sentiment analysis/result_sig_sen
